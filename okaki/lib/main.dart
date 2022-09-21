@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:okaki/responsive/desktop_body.dart';
-import 'package:okaki/responsive/mobile_body.dart';
-import 'package:okaki/responsive/responsive_layout.dart';
-import 'package:okaki/responsive/tablet_body.dart';
+//import 'package:okaki/responsive/desktop_body.dart';
+//import 'package:okaki/responsive/mobile_body.dart';
+//import 'package:okaki/responsive/responsive_layout.dart';
+//import 'package:okaki/responsive/tablet_body.dart';
 import 'package:okaki/screens/login_screen.dart';
 //import 'package:okaki/utils.dart';
 
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         tabletBody: TabletScaffold(),
         desktopBody: DesktopScaffold(),
       ),*/
-      home: LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }
