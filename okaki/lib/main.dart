@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //import 'package:okaki/responsive/responsive_layout.dart';
 //import 'package:okaki/responsive/tablet_body.dart';
 import 'package:okaki/screens/login_screen.dart';
+import 'package:okaki/screens/verification_screen.dart';
 //import 'package:okaki/utils.dart';
 
 void main() {
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
         tabletBody: TabletScaffold(),
         desktopBody: DesktopScaffold(),
       ),*/
-      home: const LoginScreen(),
+      //home: const LoginScreen(),
+      home: const VerificationScreen(),
     );
   }
 }

@@ -1,18 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:validators/validators.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class VerificationScreen extends StatefulWidget {
+  const VerificationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<VerificationScreen> createState() => _VerificationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final _emailTextController = TextEditingController();
-  String _email = "";
-  bool _emailOK = false;
+StreamController<ErrorAnimationType> errorController =
+    StreamController<ErrorAnimationType>();
+
+class _VerificationScreenState extends State<VerificationScreen> {
+  final _codeTextController = TextEditingController();
+  String _code = "";
+  bool _codeOK = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.only(
                       left: 8, right: 8, top: 2, bottom: 10),
                   child: Text(
-                    'Schritt 1/2',
+                    'Schritt 2/2',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 16.0,
@@ -66,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Geben Sie bitte Ihre E-Mail-Adresse ein.\nWir senden Ihnen einen Login-Code zu.',
+                    'Wir haben einen Code gemailt.\nBitte geben Sie den Login-Code ein.',
                     style: TextStyle(
                         fontSize: 18.0,
                         //fontWeight: FontWeight.bold,
@@ -76,36 +82,45 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
                   child: SizedBox(
-                    width: 350,
-                    child: TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      textAlign: TextAlign.left,
-                      onChanged: (value) {
-                        setState(() {
-                          _email = value;
-                          _emailOK = isEmail(_email);
-                        });
-                      },
-                      controller: _emailTextController,
-                      decoration: InputDecoration(
-                        prefixIconColor:
-                            Theme.of(context).colorScheme.background,
-                        prefixIcon: const Icon(Icons.email),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            _emailTextController.clear();
-                            setState(() {
-                              _emailOK = false;
-                            });
-                          },
-                          icon: const Icon(Icons.clear),
+                      width: 350,
+                      child: PinCodeTextField(
+                        appContext: context,
+                        length: 6,
+                        obscureText: false,
+                        animationType: AnimationType.fade,
+                        pinTheme: PinTheme(
+                          shape: PinCodeFieldShape.underline,
+                          borderRadius: BorderRadius.circular(5),
+                          fieldHeight: 50,
+                          fieldWidth: 40,
+                          //activeFillColor: Colors.white,
+                          //inactiveFillColor: Colors.grey,
+                          //inactiveColor: Colors.grey,
                         ),
-                        hintText: 'E-Mail Adresse',
-                        labelText: 'E-Mail Adresse',
-                        fillColor: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                    ),
-                  ),
+                        animationDuration: const Duration(milliseconds: 300),
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        enableActiveFill: false,
+                        keyboardType: TextInputType.number,
+                        errorAnimationController: errorController,
+                        controller: _codeTextController,
+                        onCompleted: (v) {
+                          setState(() {
+                            _codeOK = true;
+                          });
+                        },
+                        onChanged: (value) {
+                          //print(value);
+                          setState(() {
+                            _code = value;
+                          });
+                        },
+                        beforeTextPaste: (text) {
+                          //print("Allowing to paste $text");
+                          //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                          //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                          return true;
+                        },
+                      )),
                 ),
               ],
             ),
@@ -121,8 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 minimumSize: const Size(350, 50),
                 maximumSize: const Size(350, 50),
               ),
-              onPressed: _emailOK ? () => {} : null,
-              child: const Text("Login-Code anfordern"),
+              onPressed: _codeOK ? () => {} : null,
+              child: const Text("Login"),
             ),
           ),
           const Expanded(
