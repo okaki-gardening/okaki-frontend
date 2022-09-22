@@ -39,6 +39,26 @@ class _MainScreenState extends State<MainScreen> {
         title: Text(_pageTitle),
         centerTitle: true,
       ),
+      drawer: Drawer(
+        child: Container(
+          color: Theme.of(context).colorScheme.background,
+          child: ListView(
+            children: const [
+              DrawerHeader(
+                child: Text("MENÜ"),
+              ),
+              ListTile(
+                title: Text("Profil"),
+                leading: Icon(Icons.person),
+              ),
+              ListTile(
+                title: Text("Einstellungen"),
+                leading: Icon(Icons.settings),
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Theme.of(context).colorScheme.primary,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
