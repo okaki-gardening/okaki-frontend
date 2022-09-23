@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:okaki/screens/main_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:validators/validators.dart';
 
@@ -141,7 +142,16 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 minimumSize: const Size(350, 50),
                 maximumSize: const Size(350, 50),
               ),
-              onPressed: _codeOK ? () => {} : null,
+              onPressed: _codeOK
+                  ? () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainScreen(),
+                          ),
+                        )
+                      }
+                  : null,
               child: const Text("Login"),
             ),
           ),

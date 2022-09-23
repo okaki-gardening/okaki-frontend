@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:okaki/screens/verification_screen.dart';
 import 'package:validators/validators.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -126,7 +127,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 minimumSize: const Size(350, 50),
                 maximumSize: const Size(350, 50),
               ),
-              onPressed: _emailOK ? () => {} : null,
+              onPressed: _emailOK
+                  ? () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const VerificationScreen(),
+                          ),
+                        )
+                      }
+                  : null,
               child: const Text("Login-Code anfordern"),
             ),
           ),
