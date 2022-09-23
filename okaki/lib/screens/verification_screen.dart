@@ -71,12 +71,17 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Wir haben einen Code gemailt.\nBitte geben Sie den Login-Code ein.',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        //fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onPrimary),
+                  child: SizedBox(
+                    width: 350,
+                    child: Center(
+                      child: Text(
+                        'Wir haben einen Code gemailt.\nBitte geben Sie den Login-Code ein.',
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            //fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.onPrimary),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(

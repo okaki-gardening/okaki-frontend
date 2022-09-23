@@ -45,9 +45,9 @@ class MyApp extends StatelessWidget {
         tabletBody: TabletScaffold(),
         desktopBody: DesktopScaffold(),
       ),*/
-      //home: const LoginScreen(),
+      home: const LoginScreen(),
       //home: const VerificationScreen(),
-      home: const MainScreen(),
+      //home: const MainScreen(),
     );
   }
 }

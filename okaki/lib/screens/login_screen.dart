@@ -64,13 +64,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Geben Sie bitte Ihre E-Mail-Adresse ein.\nWir senden Ihnen einen Login-Code zu.',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        //fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onPrimary),
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 8.0),
+                  child: SizedBox(
+                    width: 350,
+                    child: Center(
+                      child: Text(
+                        'Geben Sie bitte Ihre E-Mail-Adresse ein.\nWir senden Ihnen einen Login-Code zu.',
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            //fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.onPrimary),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
@@ -114,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 5,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 5, right: 5, top: 5),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 5),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.secondary,
