@@ -4,6 +4,7 @@ import 'package:okaki/pages/dashboard_page.dart';
 import 'package:okaki/pages/regeln_page.dart';
 import 'package:okaki/pages/sensoren_page.dart';
 import 'package:okaki/pages/ventile_page.dart';
+import 'package:okaki/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -43,15 +44,22 @@ class _MainScreenState extends State<MainScreen> {
         child: Container(
           color: Theme.of(context).colorScheme.background,
           child: ListView(
-            children: const [
-              DrawerHeader(
+            children: [
+              const DrawerHeader(
                 child: Text("MENÜ"),
               ),
               ListTile(
-                title: Text("Profil"),
-                leading: Icon(Icons.person),
-              ),
-              ListTile(
+                  title: const Text("Profil"),
+                  leading: const Icon(Icons.person),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileScreen(),
+                      ),
+                    );
+                  }),
+              const ListTile(
                 title: Text("Einstellungen"),
                 leading: Icon(Icons.settings),
               ),
