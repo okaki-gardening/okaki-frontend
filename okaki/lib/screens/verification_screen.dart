@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:okaki/screens/main_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:validators/validators.dart';
+
+//import 'package:validators/validators.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
@@ -18,6 +19,7 @@ StreamController<ErrorAnimationType> errorController =
 
 class _VerificationScreenState extends State<VerificationScreen> {
   final _codeTextController = TextEditingController();
+  // ignore: unused_field
   String _code = "";
   bool _codeOK = false;
 
