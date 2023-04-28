@@ -13,7 +13,7 @@ jobs:
   build:
     name: Build & Release
     runs-on: macos-latest
-       defaults:
+    defaults:
       run:
         working-directory: ./okaki
     steps:
