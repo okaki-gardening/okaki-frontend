@@ -26,9 +26,8 @@ class _MyAppState extends State<MyApp> {
 
     client = Client();
     client
-        .setEndpoint('http://192.168.100.135/v1')
-        .setProject('643554166951a242bafc')
-        .setSelfSigned(status: true); // For self sign
+        .setEndpoint('https://appwrite.okaki.org/v1')
+        .setProject('644bbba076344291f17d');
   }
 
   @override
