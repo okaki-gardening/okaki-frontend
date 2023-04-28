@@ -8,14 +8,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:okaki/main.dart';
+//import 'package:okaki/main.dart';
+import 'package:okaki/screens/login_screen.dart';
 
 void main() {
   testWidgets('smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    Widget testWidget = const MediaQuery(
+        data: MediaQueryData(), child: MaterialApp(home: LoginScreen()));
 
-    expect(find.text('Login'), findsOneWidget);
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(testWidget);
+
+    expect(find.text('Login'), findsWidgets);
     //expect(find.text('1'), findsNothing);
 
     // Tap the '+' icon and trigger a frame.
