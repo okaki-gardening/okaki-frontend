@@ -10,8 +10,8 @@ class DashBoardPage extends StatefulWidget {
 class _DashBoardPageState extends State<DashBoardPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[
+    return const Column(
+      children: <Widget>[
         Text(
           "DASHBOARD PAGE",
           style: TextStyle(color: Colors.white),
