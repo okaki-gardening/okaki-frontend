@@ -10,8 +10,8 @@ class VentilePage extends StatefulWidget {
 class _SensorenPageState extends State<VentilePage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[
+    return const Column(
+      children: <Widget>[
         Text(
           "VENTILE PAGE",
           style: TextStyle(color: Colors.white),
