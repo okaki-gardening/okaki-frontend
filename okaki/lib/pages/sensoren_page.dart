@@ -10,8 +10,8 @@ class SensorenPage extends StatefulWidget {
 class _SensorenPageState extends State<SensorenPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const <Widget>[
+    return const Column(
+      children: <Widget>[
         Text(
           "SENSOREN PAGE",
           style: TextStyle(color: Colors.white),
