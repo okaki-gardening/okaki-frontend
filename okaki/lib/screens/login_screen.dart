@@ -156,10 +156,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   maximumSize: const Size(350, 50),
                 ),
                 onPressed: (_emailOK && _password.isNotEmpty)
-                    ? () => {
-                          context.authNotifier.createEmailSession(
+                    ? () async => {
+                          if (!await context.authNotifier.createEmailSession(
                               email: _emailTextController.text,
-                              password: _passwordTextController.text),
+                              password: _passwordTextController.text))
+                            {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(
+                                          context.authNotifier.error ??
+                                              "Unknown error")))
+                            }
                         }
                     : null,
                 child: const Text("Login"),
