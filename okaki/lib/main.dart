@@ -1,5 +1,6 @@
 import 'package:appwrite_auth_kit/appwrite_auth_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:okaki/screens/app_screen.dart';
 
 //import 'package:okaki/utils.dart';
@@ -7,7 +8,7 @@ import 'package:okaki/screens/app_screen.dart';
 late Client client;
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
