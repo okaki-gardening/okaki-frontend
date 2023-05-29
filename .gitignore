@@ -43,3 +43,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 okaki/lib/images/svgcleaner
+.vscode/settings.json
