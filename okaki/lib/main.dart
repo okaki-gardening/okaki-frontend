@@ -1,9 +1,8 @@
 import 'package:appwrite_auth_kit/appwrite_auth_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:okaki/providers/client_provider.dart';
 import 'package:okaki/screens/app_screen.dart';
-
-//import 'package:okaki/utils.dart';
 
 late Client client;
 
@@ -11,30 +10,15 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _MyAppState createState() => _MyAppState();
-}
+  Widget build(BuildContext context, ref) {
+    final clientState = ref.watch(clientProvider);
 
-class _MyAppState extends State<MyApp> {
-  late Client client;
-  @override
-  void initState() {
-    super.initState();
-
-    client = Client();
-    client
-        .setEndpoint('https://appwrite.okaki.org/v1')
-        .setProject('644bbba076344291f17d');
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return AppwriteAuthKit(
-      client: client,
+      client: clientState,
       child: MaterialApp(
         title: 'Okaki',
         debugShowCheckedModeBanner: false,
